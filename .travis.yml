@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - 10
+
+branches:
+  only:
+    - main
+
+jobs:
+  include:
+    - stage: release
+      node_js: lts/*
+      install:
+        - travis_retry npm install
+      script:
+        - npm run semantic-release
